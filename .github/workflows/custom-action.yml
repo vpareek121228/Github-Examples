@@ -1,3 +1,4 @@
+name: Testing Simple
 on: [push]
 
 jobs:
