@@ -1,0 +1,21 @@
+name: Greet User
+
+on:
+  push:  # Runs on every push event
+  workflow_dispatch:  # Allows manual trigger
+    inputs:
+      username:
+        description: 'Enter your name'
+        required: true
+        default: 'Guest'
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Current Date & Time
+        id: datetime
+        run: echo "datetime=$(date)" >> $GITHUB_ENV
+
+      - name: Greet User
+        run: echo "Hello, ${{ github.event.inputs.username || 'DefaultUser' }}! The current date and time is ${{ env.datetime }}"
