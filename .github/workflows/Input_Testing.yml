@@ -1,12 +1,11 @@
 name: Greet User
 
 on:
-  push:  # Runs on every push event
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:  # Only runs manually
     inputs:
       username:
         description: 'Enter your name'
-        required: true
+        required: true  # Making it required to ensure input is provided
         default: 'Guest'
 
 jobs:
@@ -18,4 +17,4 @@ jobs:
         run: echo "datetime=$(date)" >> $GITHUB_ENV
 
       - name: Greet User
-        run: echo "Hello, ${{ github.event.inputs.username || 'DefaultUser' }}! The current date and time is ${{ env.datetime }}"
+        run: echo "Hello, ${{ github.event.inputs.username }}! The current date and time is ${{ env.datetime }}"
