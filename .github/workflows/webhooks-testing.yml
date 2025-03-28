@@ -2,7 +2,7 @@ name: Webhook Triggered Workflow
 
 on:
   repository_dispatch:
-    types: first-webhook
+    types: webhook
 
 jobs:
   run-script:
