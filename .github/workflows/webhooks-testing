@@ -1,0 +1,15 @@
+name: Webhook Triggered Workflow
+
+on:
+  repository_dispatch:
+    types: first-webhook
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run a script
+        run: echo "Webhook triggered workflow is running!"
